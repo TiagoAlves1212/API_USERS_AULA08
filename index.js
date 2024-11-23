@@ -7,7 +7,6 @@ const cors = require("cors");
 
 app.use(express.json());
 app.use(cors());
-app.use(verificarLicensa);
 
 function verificarLicensa(req, res, next) {
   const apiKey = req.query.api_key;
@@ -21,6 +20,7 @@ function verificarLicensa(req, res, next) {
   }
 }
 
+app.use(verificarLicensa);
 app.use("/", userRoutes);
 
 app.listen(PORT, () => {
